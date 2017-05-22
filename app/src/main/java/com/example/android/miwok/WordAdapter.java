@@ -3,10 +3,12 @@ package com.example.android.miwok;
 import android.app.Activity;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
+import android.support.v4.content.ContextCompat;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import java.util.ArrayList;
@@ -15,9 +17,10 @@ import java.util.ArrayList;
 public class WordAdapter extends ArrayAdapter<Word> {
 
     private static final String LOG_TAG = WordAdapter.class.getSimpleName();
-
-    public WordAdapter (Activity context, ArrayList<Word> Words){
-        super(context, 0, Words);
+    private int mColorResourceId;
+    public WordAdapter (Activity context, ArrayList<Word> words, int colorResourceId) {
+        super(context, 0, words);
+        mColorResourceId = colorResourceId;
     }
 
 
@@ -36,10 +39,24 @@ public class WordAdapter extends ArrayAdapter<Word> {
         TextView defaultTextView = (TextView) listItemView.findViewById(R.id.default_text_view);
         defaultTextView.setText(currentWord.getDefaultTranslation());
 
+        ImageView imageView = (ImageView) listItemView.findViewById(R.id.image);
+
+        if (currentWord.hasImage()) {
+            imageView.setImageResource(currentWord.getImageResourceId());
+            imageView.setVisibility(View.VISIBLE);
+        } else {
+            imageView.setVisibility(View.GONE);
+        }
+
+        View textContainer = listItemView.findViewById(R.id.text_container);
+        int color = ContextCompat.getColor(getContext(), mColorResourceId);
+        textContainer.setBackgroundColor(color);
+
+
         return listItemView;
     }
 }
 
-// this mess is explained here
+//      this mess is explained here
 //      https://www.youtube.com/watch?v=ec9YBW3OTpY
 //      https://youtu.be/C4zSpiZPyXU
