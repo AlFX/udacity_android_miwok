@@ -23,23 +23,28 @@ import android.support.v7.app.AppCompatActivity;
 
 public class MainActivity extends AppCompatActivity {
 
+    // Boilerplate = tells what happens when the activity is initialized
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
-        // Set the content of the activity to use the activity_main.xml layout file
         setContentView(R.layout.activity_main);
 
-        // Find the View Pager that will allow the user to swipe between fragments
+
+
+        // Within XML, find the ViewPager ID that will allow the user to swipe between fragments
         ViewPager viewPager = (ViewPager) findViewById(R.id.viewpager);
 
-        // Create an adapter that knows which fragment should be shown on each page
+        // Create an Custom Adapter that associates a fragment to a screen position (see CategoryAdapter.java)
         CategoryAdapter adapter = new CategoryAdapter(this, getSupportFragmentManager());
 
-        // Set the adapter onto the view pager
+        // Link the Custom Adapter to the the ViewPager we created before
         viewPager.setAdapter(adapter);
 
+        /*Within XML, find the TabLayout ID that will allow the user to pick a specific fragment
+        * this basically looks like a toolbar*/
         TabLayout tabLayout = (TabLayout) findViewById(R.id.tabs);
+
+        /*Associate the TabLayout to the ViewPager in order to enable the links to the fragments*/
         tabLayout.setupWithViewPager(viewPager);
 
     }

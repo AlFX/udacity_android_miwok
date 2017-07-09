@@ -12,7 +12,8 @@
      See the License for the specific language governing permissions and
      limitations under the License.
 -->
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -20,12 +21,17 @@
     android:orientation="vertical"
     tools:context="com.example.android.miwok.MainActivity">
 
+
+    <!-- TabLayout provides a horizontal layout to display tabs -->
+    <!-- it's the top bar with the clickable tabs-->
     <android.support.design.widget.TabLayout
         android:id="@+id/tabs"
         style="@style/CategoryTab"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"/>
 
+    <!-- ViewPager let you flip left / right through fragments -->
+    <!-- it's the part below the top bar where you see the actual content -->
     <android.support.v4.view.ViewPager
         android:id="@+id/viewpager"
         android:layout_width="match_parent"

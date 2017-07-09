@@ -6,14 +6,22 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 
+/*Called by MainActivity.java
+* this is a Custom Adapter
+* apparently this looks like a Custom Class*/
+
+/*Access Modifier*/
 public class CategoryAdapter extends FragmentPagerAdapter {
+    /*Field*/
     private Context mContext;
 
+    /*Constructor Method*/
     public CategoryAdapter(Context context, FragmentManager fm) {
         super(fm);
         mContext = context;
     }
 
+    /*Helper method*/
     @Override
     public Fragment getItem(int position) {
         if (position == 0) {
@@ -27,11 +35,13 @@ public class CategoryAdapter extends FragmentPagerAdapter {
         }
     }
 
+    /*Helper method*/
     @Override
     public int getCount() {
         return 4;
     }
 
+    /*Helper method*/
     @Override
     public CharSequence getPageTitle(int position) {
         if (position == 0) {
